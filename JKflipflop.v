@@ -1,4 +1,4 @@
-module test(
+module prac(
 // Clock Input (50 MHz)
   input  CLOCK_50,
   //  Push Buttons
@@ -150,25 +150,25 @@ module countercode(D,clk,load,Q);
  
   /**********************change here**********************/ 
   
-  assign Xj = ;    
-  assign Xk = ;   
+  assign Xj = (~Y&~Z&~W);    
+  assign Xk = ~W;   
 
   JK_ff(Xj,Xk,clk,Q[3]);
 
 
-  assign Yj = ;    
-  assign Yk = ;
+  assign Yj = X&~W;    
+  assign Yk = ~Z&~W;
 
   JK_ff(Yj,Yk,clk,Q[2]);
 
 
-  assign Zj = ;
-  assign Zk = ;
+  assign Zj = (Y&~W)|(X&~W);
+  assign Zk = ~W;
 
   JK_ff(Zj,Zk,clk,Q[1]);
 
-  assign Wj = ;
-  assign Wk = ;
+  assign Wj = 1;
+  assign Wk = 1;
 
   JK_ff(Wj,Wk,clk,Q[0]);
 
@@ -180,7 +180,7 @@ endmodule
 module JK_ff(j,k,clk,q);
   input j,k,clk;
   output q;
-  
+  reg q;
   initial
   begin
     q = 1'b0;
@@ -195,31 +195,3 @@ module JK_ff(j,k,clk,q);
       endcase
     end
 endmodule
-
-//
-//                       oo0oo
-//                      o8888888o
-//                      88" . "88
-//                      (| 😑 |)
-//                      0\  =  /0
-//                    _/`---'\_
-//                  .' \\|     |// '.
-//                 / \\|||  :  |||// \
-//                / _||||| -:- |||||- \
-//               |   | \\\  -  /// |   |
-//               | \_|  ''\---/''  |_/ |
-//               \  .-\__  '-'  ___/-. /
-//             '. .'  /--.--\  `. .'
-//          ."" '<  `.___\_<|>_/___.' >' "".
-//         | | :  - \.;`\ _ /`;.`/ - ` : | |
-//         \  \ .   \ _\ /_ _/   .- /  /
-//     =====`-.____.___ \_____/___.-___.-'=====
-//                       `=---='
-//
-//
-//     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-//               佛祖保佑         卡諾圖圈對
-//               compile          一次過
-//               板子             不要壞掉
-//
