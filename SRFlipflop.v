@@ -177,9 +177,10 @@ endmodule
   /**********************change here**********************/ 
 
 
-module srff(s,r,clk,q);
+module SR_FF(s,r,clk,q);
   input r,s,clk;
   output q;
+  reg q;
   
   initial
   begin
